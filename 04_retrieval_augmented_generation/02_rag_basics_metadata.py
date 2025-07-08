@@ -61,3 +61,26 @@ if not os.path.exists(persistent_dir):
 
 else:
     print("Vector store already exists. No need to initialize.")
+
+# ------------------------------------------------------------------------------
+
+# Define embedding model & existing vector store with the embedding function
+embeddings = OpenAIEmbeddings(model=TEXT_EMBEDDING_3_SMALL)
+db = Chroma.from_documents(
+    documents=docs, embedding=embeddings, persist_directory=persistent_dir
+)
+
+query = "How did Juliet die?"
+
+# Retrieve relevant documents based on the query
+retriever = db.as_retriever(
+    search_type="similarity_score_threshold",
+    search_kwargs={"k": 3, "score_threshold": 0.1},
+)
+relevant_docs = retriever.invoke(query)
+
+# Display the relevant results with metadata
+print("\n--- Relevant Documents ---")
+for i, doc in enumerate(relevant_docs, 1):
+    print("Documents {}:\n{}\n".format(i, doc.page_content))
+    print("Source: {}\n".format(doc.metadata["source"]))
