@@ -14,12 +14,6 @@ OPENAI_TEXT_EMBEDDING_ADA_002_STR = "text-embedding-ada-002"
 CHROMA_DB_OPENAI_STR = "chroma_db_openai"
 HUGGINGFACE_MODEL_STR  = "sentence-transformers/all-mpnet-base-v2"
 CHROMA_DB_HUGGINGFACE_STR = "chroma_db_huggingface"
-# TEXT_EMBEDDING_3_SMALL = "text-embedding-3-small"
-# CHROMA_DB_CHAR_STR = "chroma_db_char"
-# CHROMA_DB_SENT_STR = "chroma_db_sent"
-# CHROMA_DB_TOKEN_STR = "chroma_db_token"
-# CHROMA_DB_REC_CHAR_STR = "chroma_db_rec_char"
-# CHROMA_DB_CUSTOM_STR = "chroma_db_custom"
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_dir, BOOKS_DIR_STR, ODYSSEY_BOOK_STR)
